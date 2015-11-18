@@ -7,12 +7,7 @@
  */
 session_start();
 
-$host = '192.168.1.2';
-$user = 'yasmine';
-$pwd = 'elhimdi123';
-$database = 'comments';
-
-$conn = mysqli_connect($host, $user, $pwd, $database) or die("Error" .  mysqli_error($conn));
+$conn = require_once('./mysql_connect.php');
 
 if(empty($_POST['login']) || empty($_POST['password'])){
     echo 'Empty fields';
