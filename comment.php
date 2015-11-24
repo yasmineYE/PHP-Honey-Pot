@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['user']) || isset($_SESSION['new_user'])){
-  $conn = require_once('./mysql_connect.php');
+  $conn = require_once('./config/mysql_connect.php');
   $req = $conn->query("SELECT title,date FROM list");
 
 if($req){

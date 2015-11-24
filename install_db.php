@@ -27,7 +27,7 @@ $sql_list = <<<SQL
   );
 SQL;
 
-$conn = require_once('./mysql_connect.php');
+$conn = require_once('./config/mysql_connect.php');
 $res = $conn->query("DROP DATABASE main;");
 $res = $conn->query("CREATE DATABASE main;");
 $conn->select_db("main");

@@ -10,7 +10,7 @@ if(empty($_POST['login']) || empty($_POST['password']) || empty($_POST['sd_passw
   $sd_password = filter_var($_POST['sd_password'],FILTER_SANITIZE_STRING);
 
   if(!empty($login)){
-    $conn = require_once('mysql_connect.php');
+    $conn = require_once('config/mysql_connect.php');
     $test_req = $conn->query("SELECT * FROM users WHERE login='".$login."'");
 
     if(!$test_req){

@@ -5,7 +5,7 @@ if(empty($_POST['title'])){
   echo 'Nothing to remove';
 }else{
   $title = filter_var($_POST['title'],FILTER_SANITIZE_STRING);
-  $conn = require_once('./mysql_connect.php');
+  $conn = require_once('./config/mysql_connect.php');
   $req = $conn->query("DELETE FROM list WHERE title='".$title."'");
 
   if($req){

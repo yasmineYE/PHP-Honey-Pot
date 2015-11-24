@@ -15,7 +15,7 @@ if(isset($_SESSION['user']) || isset($_SESSION['new_user'])){
     $date = date("M/d/y, h:i:sa");
 
     if(!empty($title)){
-      $conn = require_once('./mysql_connect.php');
+      $conn = require_once('./config/mysql_connect.php');
       $exist = $conn->query("SELECT * FROM list WHERE title='".$title."'");
 
       if(mysqli_num_rows($exist) != 0){
