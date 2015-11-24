@@ -117,14 +117,9 @@ function send(){
 }
 
 
-function onRowClick(){
-  $(document).ready(function(){
-    $("#commentTable").find('tr').click( function(){
-      index = $(this).index();
-      return index;
-    }
-  });
-});
+function onRowClick() {
+  return $("#commentTable").find('tr').index();
+};
 
 function displayComment()
 {
@@ -134,10 +129,9 @@ function displayComment()
     var date;
 
     index = onRowClick();
-    //alert(index);
 
-    title = nodeList.item(index-1).firstChild.nodeValue;
-    date = document.getElementsByTagName("td").item(index-1).firstChild.nodeValue;
+    title = nodeList.item(index).firstChild.nodeValue;
+    date = document.getElementsByTagName("td").item(index).firstChild.nodeValue;
 
     var params = "title="+title+"&date="+date;
 
