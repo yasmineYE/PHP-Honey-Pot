@@ -1,12 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 session_start();
-$conn = require_once('./mysql_connect.php');
 
 if(empty($_POST['login']) || empty($_POST['password']) || empty($_POST['sd_password'])){
   echo 'Empty fields';
@@ -16,10 +10,11 @@ if(empty($_POST['login']) || empty($_POST['password']) || empty($_POST['sd_passw
   $sd_password = filter_var($_POST['sd_password'],FILTER_SANITIZE_STRING);
 
   if(!empty($login)){
+    $conn = require_once('mysql_connect.php');
     $test_req = $conn->query("SELECT * FROM users WHERE login='".$login."'");
 
-    if($row = mysqli_fetch_row($test_req)){
-      echo 'Login already exists';
+    if(!$test_req){
+      echo die("Error : ".mysqli_error($conn));
     }else{
       if($password == $sd_password){
         $creation_req = $conn->query("INSERT INTO users(login,password) VALUES ('".$login."','".$password."')");
@@ -27,7 +22,7 @@ if(empty($_POST['login']) || empty($_POST['password']) || empty($_POST['sd_passw
           echo 'Registred';
           $_SESSION['new_user'] = $password;
         }else{
-          die(mysqli_error($creation_req));
+          die(mysqli_error($conn));
         }
       }else{
         echo 'Wrong password match. Please try again';
