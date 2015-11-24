@@ -1,10 +1,5 @@
 <?php
 
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
-
-session_start();
-
 if(empty($_POST['title']) || empty($_POST['date'])){
   echo 'Nothing to display';
 }else{
@@ -13,7 +8,8 @@ if(empty($_POST['title']) || empty($_POST['date'])){
   $req = $conn->query("SELECT * FROM list WHERE title='".$title."'");
 
   if($row = $req->fetch_row()){
-    $date = $row[3];
+    var_dump($row);
+    $date = $row[2];
     $content = $row[1];
   }
 
@@ -27,21 +23,19 @@ echo <<<HTML
 <body>
   <div id="main">
     <label for="date">Date </label>
-    <textarea id="dateDisplay" rows="1">'.$date.'</textarea></br>
+    <textarea id="dateDisplay" rows="1">$date</textarea></br>
     <br>
     <label for="title"> Title </label>
-    <textarea id="titleDisplay" rows="1">'. $title . '</textarea></br>
+    <textarea id="titleDisplay" rows="1">$title</textarea></br>
     <br>
     <label for="content"> Content </label>
-    <textarea id="contentDisplay" rows="8">'. $content .'</textarea></br>
+    <textarea id="contentDisplay" rows="8">$content</textarea></br>
   </div>
   <div id="menu">
     <input type="button" value="back" onclick="back()" />
   </div>
-  <div id="message" />
-
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="./ajax.js"></script>
+  <div id="message"></div>
 </body>
-</html>';
+</html>
+HTML;
 }
