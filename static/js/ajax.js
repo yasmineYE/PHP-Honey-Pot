@@ -1,186 +1,97 @@
-function getXMLHttpRequest()
-{
-    var xhrequest = null;
+function connect() {
+  var login = document.getElementById("login").value;
+  var password = document.getElementById("password").value;
+  var params="login="+login+"&password="+password;
 
-    if(window.XMLHttpRequest || window.ActiveXObject){
-        if(window.ActiveXObject){
-            try{
-                xhrequest = new ActiveXObject("Msxml2.XMLHTTP");
-            }catch(e){
-                xhrequest = new ActiveXObject("Microsoft.XMLHttp");
-            }
-        }else{
-            xhrequest = new XMLHttpRequest();
-
-        }
+  $.post('./connect.php', params, function(data) {
+    if(data == 'Connected'){
+      window.location.replace("./comment.php");
     }else{
-        alert("XMLHttpRequest is not supported by this browser");
-        return null;
+      alert(result);
     }
-
-    return xhrequest;
+  });
 }
 
-function connect()
-{
-    var req = getXMLHttpRequest();
+function createUser() {
+  var login = document.getElementById("login").value;
+  var password = document.getElementById("password").value;
+  var sd_password = document.getElementById("sd_password").value;
+  var params = {
+    "login": login,
+    "password": password,
+    "sd_password": sd_password
+  };
 
-    var login = document.getElementById("login").value;
-    var password = document.getElementById("password").value;
-
-
-    var params="login="+login+"&password="+password;
-
-    req.open('POST', './connect.php', true);
-    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(params);
-
-
-    req.onreadystatechange = function(){
-        if(req.readyState == 4 && req.status == 200){
-
-            var result = req.responseText;
-
-            if(result == 'Connected'){
-                window.location.replace("./comment.php");
-            }else{
-                alert(result);
-
-            }
-        }
+  $.post('./creation.php', params, function(data) {
+    if(data == 'Registred'){
+      window.location.replace("./comment.php")
+    }else{
+      alert(result);
     }
+  });
 }
 
-function createUser()
-{
-    var req = getXMLHttpRequest();
+function back() {
+  window.location.replace("./comment.php");
+}
 
-    var login = document.getElementById("login").value;
-    var password = document.getElementById("password").value;
-    var sd_password = document.getElementById("sd_password").value;
+function createComment() {
+  window.location.href= "./newComment.php";
+}
 
+function send() {
+  var title = document.getElementById("title").value;
+  var content = document.getElementById("content").value;
+  var params = {
+    "title": title,
+    "content": content
+  };
 
-    var params="login="+login+"&password="+password+"&sd_password="+sd_password;
-
-    req.open('POST', './creation.php', true);
-    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(params);
-
-
-    req.onreadystatechange = function(){
-        if(req.readyState == 4 && req.status == 200){
-
-            var result = req.responseText;
-
-            if(result == 'Registred'){
-                window.location.replace("./comment.php")
-            }else{
-                alert(result);
-            }
-        }
+  $.post('./createComment.php', params, function(data) {
+    if(data == "OK"){
+      alert("Successfully submitted");
+    }else{
+      alert(result);
     }
+  });
 }
-
-function back()
-{
-    window.location.replace("./comment.php");
-}
-
-function createComment()
-{
-    window.location.href= "./newComment.php";
-}
-
-function send(){
-    var req = getXMLHttpRequest();
-
-    var title = document.getElementById("title").value;
-    var content = document.getElementById("content").value;
-
-    var params = "title="+title+"&content="+content;
-
-    req.open('POST', './createComment.php', true);
-    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(params);
-
-    req.onreadystatechange = function(){
-        if(req.readyState == 4 && req.status == 200){
-            var result = req.responseText;
-
-            if(result == "OK"){
-                alert("Successfully submitted");
-            }else{
-               alert(result);
-            }
-        }
-    }
-}
-
 
 function onRowClick() {
   return $("#commentTable").find('tr').index();
 };
 
-function displayComment()
-{
-    var req = getXMLHttpRequest();
-    var nodeList = document.getElementsByTagName("a");
-    var title;
-    var date;
+function displayComment() {
+  var nodeList = document.getElementsByTagName("a");
+  var index = onRowClick();
+  var title = nodeList.item(index).firstChild.nodeValue;
+  var date = document.getElementsByTagName("td").item(index).firstChild.nodeValue;
+  var params = {
+    "title": title,
+    "date": date
+  };
 
-    index = onRowClick();
-
-    title = nodeList.item(index).firstChild.nodeValue;
-    date = document.getElementsByTagName("td").item(index).firstChild.nodeValue;
-
-    var params = "title="+title+"&date="+date;
-
-    req.open('POST', './displayComment.php', true);
-    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(params);
-
-    req.onreadystatechange = function(){
-        if(req.readyState == 4 && req.status == 200){
-            var result = req.responseText;
-
-            document.getElementById("menu").innerHTML = ' ';
-
-            var div = document.getElementById("main");
-            div.innerHTML = ' ';
-
-
-            div.innerHTML = result;
-
-        }
-    }
-
+  $.post('./displayComment.php', params, function(data) {
+    document.getElementById("menu").innerHTML = ' ';
+    var div = document.getElementById("main");
+    div.innerHTML = ' ';
+    div.innerHTML = data;
+  });
 }
 
-function foo()
-{
-    var req = getXMLHttpRequest();
-    var index = onRowClick();
+function foo() {
+  var index = onRowClick();
+  var nodeList = document.getElementsByTagName("a");
+  var title = nodeList.item(index).firstChild.nodeValue;
+  var params = {
+    "title": title
+  };
 
-    var nodeList = document.getElementsByTagName("a");
-    var title = nodeList.item(index).firstChild.nodeValue;
-
-    var param = "title="+title;
-
-    req.open('POST', './removeComment.php', true);
-    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(param);
-
-    req.onreadystatechange = function(){
-        if(req.readyState == 4 && req.status == 200){
-            var result = req.responseText;
-
-            if(result == "removed"){
-                document.getElementById("commentTable").deleteRow(index);
-                window.location.replace('./comment.php');
-            }else{
-                document.getElementById("message").innerHTML= result;
-            }
-        }
+  $.post('./removeComment.php', params, function(data) {
+    if(data == "removed"){
+      document.getElementById("commentTable").deleteRow(index);
+      window.location.replace('./comment.php');
+    }else{
+      document.getElementById("message").innerHTML= data;
     }
-
+  });
 }
