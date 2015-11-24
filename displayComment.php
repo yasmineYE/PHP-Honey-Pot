@@ -33,7 +33,9 @@ echo <<<HTML
     <input type="button" value="back" onclick="back()" />
   </div>
   <div id="message" />
-<script type="text/javascript" src="./ajax.js"></script>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="./ajax.js"></script>
 </body>
 </html>';
 }

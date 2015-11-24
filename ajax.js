@@ -118,13 +118,13 @@ function send(){
 
 
 function onRowClick(){
-    $(document).ready(function(){
-      $("#commentTable").find('tr').click( function(){
-        index = $(this).index();
-    });
+  $(document).ready(function(){
+    $("#commentTable").find('tr').click( function(){
+      index = $(this).index();
+      return index;
+    }
+  });
 });
-return index;
-}
 
 function displayComment()
 {
