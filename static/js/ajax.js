@@ -162,7 +162,7 @@ function foo()
     var index = onRowClick();
 
     var nodeList = document.getElementsByTagName("a");
-    var title = nodeList.item(index-1).firstChild.nodeValue;
+    var title = nodeList.item(index).firstChild.nodeValue;
 
     var param = "title="+title;
 
