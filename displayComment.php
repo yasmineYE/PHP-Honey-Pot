@@ -16,10 +16,13 @@ if(empty($_POST['title']) || empty($_POST['date'])){
     $date = $row[3];
     $content = $row[1];
   }
+
+$header = require_once('./header.php');
+
 echo <<<HTML
 <html>
 <head>
-  <title>My wonderful application</title>
+  $header
 </head>
 <body>
   <div id="main">
