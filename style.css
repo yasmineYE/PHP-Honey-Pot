@@ -1,137 +1,114 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Jul 17, 2015, 3:54:06 PM
-    Author     : root
-*/
-
-body
-{
-    background: #fff;
+body {
+  background: #fff;
 }
 
-body,input,textarea
-{
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    font-size: 10pt;
-    font-weight: 200;
-    line-height: 1.75em;
-    color: #888;
+body,input,textarea {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  font-weight: 200;
+  line-height: 1.75em;
+  color: #888;
 }
 
-h1,h2,h3,h4,h5,h6{
-    font-weight: 500;
-    color: #666;
-    line-height: 1.5em;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  color: #666;
+  line-height: 1.5em;
 }
 
-form
-{    
+form label {
+  display: block;
+  text-align: left;
+  margin-top: 0.5em;
 }
-    form label
-    {
-        display: block;
-        text-align: left;
-        margin-top: 0.5em;
-    }
-    
-    form input[type="text"],
-    form input[type="password"],
-    form textarea
-    {
-        position: relative;
-        -webkit-appearance: none;
-        display: block;
-        border: 0;
-        outline: 0;
-        background: #fff;
-        backgroung: rgba(255,255,255,0.75);
-        width: 100%;
-        border-radius: 0.35em;
-        padding: 0.75em 1em 0.75em 1em;
-        box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
-        border: solid 1px rgba(0,0,0,0.15);
 
-    }
-        form input[type="text"],
-        form input[type="password"]
-        {
-            line-height: 1.25em;
-        }
-        
-    input[type="button"],
-    input[type="button"]
-    {
-       position: relative;
-       dislay: inline-block;
-       border-radius: 0.35em;
-       color: #fff;
-       text-decoration: none;
-       padding: 0.75em 2.5em 0.75em 2.5em;
-       background-color: #8ebebc;
-       border: 0;
-       cursor: pointer;
-       line-height: 1.25em;
-    }
-    
-    table{
-        width: 100%;
-        
-    }
-        table.default{
-            width: 50%;
-            text-align: center;
-        }
-        
-        td{
-            padding: 0.5em 1em 0.5em 1em;
-        }
-        tr{
-            text-align: center;
-        }
-        th{
-            text-align: center;
-            padding: 0.5em 1em 0.5em 1em;
-            color: #fff;
-            background: #222729;
-        }
- 
-#header{
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px;
-    color: #fff;
-    background: #222629 url('image/slides-overlay.png');
-}        
-    
-#main{
-    position: relative;
-    top: 30px;
-    width: 100%;
-    margin: 0 auto;
+form input[type="text"], form input[type="password"], form textarea {
+  position: relative;
+  -webkit-appearance: none;
+  display: block;
+  border: 0;
+  outline: 0;
+  background: #fff;
+  backgroung: rgba(255,255,255,0.75);
+  width: 100%;
+  border-radius: 0.35em;
+  padding: 0.75em 1em 0.75em 1em;
+  box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
+  border: solid 1px rgba(0,0,0,0.15);
 }
-      
-#menu{
-    position: relative;
-    top: 50px;
-    left: 300px;
+
+form input[type="text"], form input[type="password"] {
     line-height: 1.25em;
-    width: 50%;
-    
-
 }
 
-#contentDisplay, #titleDisplay, #dateDisplay{
-    width: 100%;
-    position: relative;
-    background-color: #D0D0D0;
+input[type="button"], input[type="button"] {
+   position: relative;
+   dislay: inline-block;
+   border-radius: 0.35em;
+   color: #fff;
+   text-decoration: none;
+   padding: 0.75em 2.5em 0.75em 2.5em;
+   background-color: #8ebebc;
+   border: 0;
+   cursor: pointer;
+   line-height: 1.25em;
 }
 
-#login, #password, #sd_password{
-    width: 40%;
+table {
+  width: 100%;
+}
+
+table.default {
+  width: 50%;
+  text-align: center;
+}
+
+td {
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+tr {
+    text-align: center;
+}
+
+th {
+    text-align: center;
+    padding: 0.5em 1em 0.5em 1em;
+    color: #fff;
+    background: #222729;
+}
+
+#header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  color: #fff;
+  background: #222629 url('image/slides-overlay.png');
+}
+
+#main {
+  position: relative;
+  top: 30px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#menu {
+  position: relative;
+  top: 50px;
+  left: 300px;
+  line-height: 1.25em;
+  width: 50%;
+}
+
+#contentDisplay, #titleDisplay, #dateDisplay {
+  width: 100%;
+  position: relative;
+  background-color: #D0D0D0;
+}
+
+#login, #password, #sd_password {
+  width: 40%;
 }
