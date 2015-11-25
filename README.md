@@ -18,7 +18,7 @@ Failles connues :
 Après avoir installé `docker` :
 ```shell
 docker build -t phphoneypot .
-docker run -d -p 8000:8000 -v $PWD:/go ubuntu-go
+docker run -d -p 3000:80 -p 3306:3306 -v $PWD:/app/ phphoneypot
 ```
 
 Le site sera actif au bout de quelques secondes. Vous pourrez alors vous connecter à l'adresse http://localhost:8000/.
